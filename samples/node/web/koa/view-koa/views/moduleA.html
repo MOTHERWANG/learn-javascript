@@ -1,0 +1,49 @@
+{%extends "base.html"%}{% block main%}
+<div class="container" style="height: 1000px;">
+    <div class="row">
+
+        <div class="col-md-10">
+
+            <div class="panel panel-default">
+                <div class="panel-body">text</div>
+                <button class="btn btn-default" onclick="getWeatherData()">clk</button>
+                <table class="table"></table>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+    var getWeatherData = function (zone) {
+        var url = 'https://api.openweathermap.org/data/2.5/forecast?id=1814087&appid=ac8e3f5a14963c5333c5431632957872';
+        $.getJSON(url, function (data) {
+            // alert(data)
+            // console.log(data)
+            var weathers = []
+            for (let i = 0; i < data.list.length; i++) {
+                console.log('d')
+                var weather = {
+                    time: new Date(data.list[i].dt * 1000).toLocaleString(),
+                    temp: tempConvTToC(data.list[i].main.temp).toFixed(1),
+                    main: data.list[i].weather[0].main,
+                    windSpeed: data.list[i].wind.speed
+                }
+                weathers.push(weather)
+            }
+            var info = {
+                city: data.city.name,
+                time1: new Date(data.list[0].dt * 1000).toLocaleString(),
+                time2: data.list[0].dt_txt,
+                length: data.list.length,
+                // weatherlist:
+            }
+            console.log(weathers)
+        });
+
+
+    }
+    var tempConvTToC = function (k) {
+        return k - 273.15;
+    }
+</script>
+{%endblock%}

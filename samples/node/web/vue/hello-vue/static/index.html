@@ -11,25 +11,25 @@
     <script src="/static/js/vue.js"></script>
     <script>
 
-$(function () {
-    var vm = new Vue({
-        el: '#vm',
-        data: {
-            name: 'Robot',
-            age: 15
-        }
-    });
-    window.vm = vm;
-});
+        $(function () {
+            var vm = new Vue({
+                el: '#vm',
+                data: {
+                    name: 'Robot',
+                    age: 15
+                }
+            });
+            window.vm = vm;
+        });
 
-function executeJs() {
-    try {
-        var code = $('#code').val();
-        var fn = new Function('var vm = window.vm;\n' + code);
-        fn();
-    } catch (e) {}
-    return false;
-}
+        function executeJs() {
+            try {
+                var code = $('#code').val();
+                var fn = new Function('var vm = window.vm;\n' + code);
+                fn();
+            } catch (e) { }
+            return false;
+        }
 
 
 
@@ -54,7 +54,8 @@ function executeJs() {
     <div id="important" style="color:#cdbfe3; background-color:#6f5499; padding:30px 0; margin:-20px 0 20px 0;">
         <div class="container">
             <h1 style="color:#fff; font-size:60px">Getting started</h1>
-            <p style="font-size:24px; line-height:48px">Learn JavaScript, Node.js, npm, koa2, Vue, babel, etc. at liaoxuefeng.com.</p>
+            <p style="font-size:24px; line-height:48px">Learn JavaScript, Node.js, npm, koa2, Vue, babel, etc. at
+                liaoxuefeng.com.</p>
         </div>
     </div>
 
@@ -74,7 +75,9 @@ function executeJs() {
                         <h3>Try change the name or age</h3>
                         <form action="#" onsubmit="return executeJs()">
                             <div class="form-group">
-                                <textarea id="code" class="form-control" style="font-family: Menlo,Monaco,Consolas,'Courier New',monospace; resize:none;" rows="5">vm.name = 'Bob';</textarea>
+                                <textarea id="code" class="form-control"
+                                    style="font-family: Menlo,Monaco,Consolas,'Courier New',monospace; resize:none;"
+                                    rows="5">vm.name = 'Bob';</textarea>
                             </div>
                             <button type="submit" class="btn btn-primary">Execute</button>
                         </form>
@@ -117,7 +120,9 @@ function executeJs() {
                     </div>
                     <div class="panel-body">
                         <p>full-stack JavaScript course</p>
-                        <p><a target="_blank" href="http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000">Read more</a></p>
+                        <p><a target="_blank"
+                                href="http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000">Read
+                                more</a></p>
                     </div>
                 </div>
             </div>
@@ -128,7 +133,9 @@ function executeJs() {
                     </div>
                     <div class="panel-body">
                         <p>the latest Python course</p>
-                        <p><a target="_blank" href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000">Read more</a></p>
+                        <p><a target="_blank"
+                                href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000">Read
+                                more</a></p>
                     </div>
                 </div>
             </div>
@@ -139,7 +146,9 @@ function executeJs() {
                     </div>
                     <div class="panel-body">
                         <p>A course about git version control</p>
-                        <p><a target="_blank" href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000">Read more</a></p>
+                        <p><a target="_blank"
+                                href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000">Read
+                                more</a></p>
                     </div>
                 </div>
             </div>
@@ -154,7 +163,8 @@ function executeJs() {
                 <a target="_blank" href="http://weibo.com/liaoxuefeng">Weibo</a>
             </p>
             <p>This JavaScript course is created by <a target="_blank" href="http://weibo.com/liaoxuefeng">@廖雪峰</a>.</p>
-            <p>Code licensed <a target="_blank" href="https://github.com/michaelliao/learn-javascript/blob/master/LICENSE">Apache</a>.</p>
+            <p>Code licensed <a target="_blank"
+                    href="https://github.com/michaelliao/learn-javascript/blob/master/LICENSE">Apache</a>.</p>
         </div>
     </footer>
 </body>

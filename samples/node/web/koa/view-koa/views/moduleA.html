@@ -1,27 +1,37 @@
 {%extends "base.html"%}{% block main%}
-<div class="container" style="height: 1000px;">
+<div class="container">
     <div class="row">
 
         <div class="col-md-10">
 
             <div class="panel panel-default">
-                <div class="panel-body">text</div>
-                <button class="btn btn-default" onclick="getWeatherData()">clk</button>
-                <table class="table"></table>
+                <div class="panel-body">
+                    <p class="col-md-2">Dalian</p>
+                    <button class="btn btn-default col-md-2" onclick="getWeatherData(1814087)">clk</button>
+                </div>
+
+                <table class="table" id="myTable">
+                    <tr>
+                        <td>Time</td>
+                        <td>temperature</td>
+                        <td>weather</td>
+                        <td>windspeed</td>
+                    </tr>
+                </table>
             </div>
         </div>
 
     </div>
 </div>
 <script>
-    var getWeatherData = function (zone) {
-        var url = 'https://api.openweathermap.org/data/2.5/forecast?id=1814087&appid=ac8e3f5a14963c5333c5431632957872';
+    var getWeatherData = function (cityId) {
+        var url = 'https://api.openweathermap.org/data/2.5/forecast?id=' + cityId + '&appid=ac8e3f5a14963c5333c5431632957872';
         $.getJSON(url, function (data) {
             // alert(data)
             // console.log(data)
             var weathers = []
+            var table = document.getElementById("myTable");
             for (let i = 0; i < data.list.length; i++) {
-                console.log('d')
                 var weather = {
                     time: new Date(data.list[i].dt * 1000).toLocaleString(),
                     temp: tempConvTToC(data.list[i].main.temp).toFixed(1),
@@ -29,15 +39,23 @@
                     windSpeed: data.list[i].wind.speed
                 }
                 weathers.push(weather)
+                var row = table.insertRow(i + 1)
+                var cell1 = row.insertCell(0)
+                var cell2 = row.insertCell(1)
+                var cell3 = row.insertCell(2)
+                var cell4 = row.insertCell(3)
+                cell1.innerHTML = weather.time
+                cell2.innerHTML = weather.temp + ' °C'
+                cell3.innerHTML = weather.main
+                cell4.innerHTML = weather.windSpeed
             }
             var info = {
                 city: data.city.name,
-                time1: new Date(data.list[0].dt * 1000).toLocaleString(),
-                time2: data.list[0].dt_txt,
                 length: data.list.length,
+                weathers: weathers
                 // weatherlist:
             }
-            console.log(weathers)
+            console.log(info.weathers)
         });
 
 
